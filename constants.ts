@@ -5,10 +5,10 @@
 
 import { PortfolioProject, OperationalStandard, BackgroundMetric } from './types';
 
-export const BUILDER_NAME = 'Nook Studio & Co.';
+export const BUILDER_NAME = 'Samriddhi Dutta';
 export const BUILDER_TITLE = 'Independent Digital Product Builder & Interface Designer';
 
-export const AVAILABILITY_STATUS = 'Available for turnkey client builds · Asynchronous workflow preferred';
+export const AVAILABILITY_STATUS = 'Available for select turnkey client builds · Asynchronous workflow preferred';
 
 export const CORE_STATEMENT = 
   'Designing and deploying fast, minimalist business websites and mobile applications.';

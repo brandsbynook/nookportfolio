@@ -38,13 +38,18 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavClick }) => {
       }`}
     >
       <div className="max-w-[1200px] mx-auto px-6 md:px-10 flex items-center justify-between gap-8">
-        {/* Zone 1: Single text element wordmark */}
+        {/* Zone 1: Solo Builder Identity & Sub-tag */}
         <a
           href="#top"
           onClick={(e) => onNavClick(e, 'top')}
-          className="text-lg md:text-xl font-serif font-bold tracking-tight text-[#e6e2da] hover:opacity-80 transition-opacity whitespace-nowrap shrink-0"
+          className="flex flex-col hover:opacity-85 transition-opacity shrink-0"
         >
-          Nook Studio &amp; Co.
+          <span className="font-serif text-lg tracking-tight text-[#e6e2da] leading-tight">
+            Samriddhi Dutta
+          </span>
+          <span className="font-mono text-[9px] sm:text-[10px] tracking-wider uppercase text-[#7d8b99] mt-0.5">
+            INDEPENDENT PRODUCT BUILDER &amp; INTERFACE DESIGNER
+          </span>
         </a>
 
         {/* Zone 2: Navigation Links */}
@@ -69,13 +74,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavClick }) => {
             className="hover:text-[#e6e2da] transition-colors whitespace-nowrap shrink-0"
           >
             Approach
-          </a>
-          <a
-            href="#drive"
-            onClick={(e) => onNavClick(e, 'drive')}
-            className="hover:text-[#e6e2da] transition-colors whitespace-nowrap shrink-0"
-          >
-            Drive Files
           </a>
           <a
             href="#contact"

@@ -11,41 +11,26 @@ import {
   BACKGROUND_STATS,
   CONTACT_EMAIL,
 } from '../constants';
-import { DriveFile } from '../services/googleDriveService';
 import ScrollReveal from './ScrollReveal';
 
-interface BackgroundProcessProps {
-  attachedDriveFile?: DriveFile | null;
-  onClearAttachedFile?: () => void;
-  onScrollToDrive?: () => void;
-}
-
-export const BackgroundProcess: React.FC<BackgroundProcessProps> = ({
-  attachedDriveFile,
-  onClearAttachedFile,
-  onScrollToDrive,
-}) => {
+export const BackgroundProcess: React.FC = () => {
   const [projectType, setProjectType] = useState('3-5 Page Turnkey Business Site');
   const [timeline, setTimeline] = useState('4–5 Days Turnkey');
   const [notes, setNotes] = useState('');
 
   const generateMailto = () => {
     const subject = encodeURIComponent(`Project Scope Brief: ${projectType}`);
-    const driveAttachmentText = attachedDriveFile
-      ? `\n\nAttached Google Drive Reference:\n- Name: ${attachedDriveFile.name}\n- Link: ${attachedDriveFile.webViewLink || `https://drive.google.com/file/d/${attachedDriveFile.id}/view`}\n`
-      : '';
-
     const body = encodeURIComponent(
-      `Hi Nook Studio & Co.,\n\nI am reaching out regarding a ${projectType}.\nTarget Timeline: ${timeline}\n\nProject Scope & Context:\n${notes || '[Please describe your business and site requirements here]'}${driveAttachmentText}\n\nThank you!`
+      `Hi Nook Studio & Co.,\n\nI am reaching out regarding a ${projectType}.\nTarget Timeline: ${timeline}\n\nProject Scope & Context:\n${notes || '[Please describe your business and site requirements here]'}\n\nThank you!`
     );
     return `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
   };
 
   return (
-    <section id="approach" className="py-20 md:py-28 max-w-[1200px] mx-auto px-6 md:px-10 border-b border-[#1b222c]">
+    <section id="approach" className="py-12 max-w-[1200px] mx-auto px-6 md:px-10 border-b border-[#1b222c]">
       {/* Section Header with Scroll Reveal */}
       <ScrollReveal distance={20} duration={0.6}>
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-[#1b222c] mb-12">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-[#1b222c] mb-8">
           <div>
             <div className="flex items-center gap-2 text-xs font-mono text-[#7d8b99] uppercase tracking-wider mb-2">
               <span>Methodology &amp; Background</span>
@@ -63,11 +48,11 @@ export const BackgroundProcess: React.FC<BackgroundProcessProps> = ({
       </ScrollReveal>
 
       {/* 2-Column Deep Dive */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-10">
         {/* Left Column: Education & Experience Narrative */}
-        <div className="lg:col-span-7 space-y-8">
+        <div className="lg:col-span-7 space-y-5">
           {/* Behavioral Foundation */}
-          <div className="p-8 bg-[#0b0d11] rounded-lg border border-[#1b2127]">
+          <div className="p-6 lg:p-7 bg-[#0b0d11] rounded-lg border border-[#1b2127]">
             <span className="text-xs font-mono uppercase text-[#7d8b99] tracking-wider block mb-2">
               Behavioral &amp; Cognitive Foundation
             </span>
@@ -85,7 +70,7 @@ export const BackgroundProcess: React.FC<BackgroundProcessProps> = ({
           </div>
 
           {/* Shipped Experience */}
-          <div className="p-8 bg-[#0b0d11] rounded-lg border border-[#1b2127]">
+          <div className="p-6 lg:p-7 bg-[#0b0d11] rounded-lg border border-[#1b2127]">
             <span className="text-xs font-mono uppercase text-[#7d8b99] tracking-wider block mb-2">
               Shipped Production Experience
             </span>
@@ -108,7 +93,7 @@ export const BackgroundProcess: React.FC<BackgroundProcessProps> = ({
           </div>
 
           {/* Layered AI Pipeline Explanation */}
-          <div className="p-8 bg-[#0b0d11] rounded-lg border border-[#1b2127]">
+          <div className="p-6 lg:p-7 bg-[#0b0d11] rounded-lg border border-[#1b2127]">
             <span className="text-xs font-mono uppercase text-[#7d8b99] tracking-wider block mb-2">
               Workflow Architecture
             </span>
@@ -140,101 +125,66 @@ export const BackgroundProcess: React.FC<BackgroundProcessProps> = ({
         </div>
 
         {/* Right Column: Turnkey Scope Initiator Box */}
-        <div className="lg:col-span-5 bg-[#0b0d11] p-8 rounded-lg border border-[#1b2127] flex flex-col justify-between">
-          <div>
-            <div className="flex items-center justify-between text-xs font-mono text-[#7d8b99] mb-4">
-              <span>Quick Scope Builder</span>
-              <span>Turnkey</span>
+        <div className="lg:col-span-5 bg-[#0b0d11] p-5 md:p-6 rounded-lg border border-[#1b2127] h-fit self-start">
+          <div className="flex items-center justify-between text-xs font-mono text-[#7d8b99] mb-4">
+            <span>Quick Scope Builder</span>
+            <span>Turnkey</span>
+          </div>
+
+          <h3 className="text-2xl font-serif text-[#e6e2da] mb-3">
+            Prepare a Scope Brief
+          </h3>
+          <p className="text-xs text-[#7d8b99] leading-relaxed mb-6 font-sans">
+            Select your requirements below to instantly format a clear, structured email inquiry directly to <code className="text-[#e6e2da] font-mono bg-[#141a22] px-1 py-0.5 rounded border border-[#232c37]">{CONTACT_EMAIL}</code>.
+          </p>
+
+          <div className="space-y-4">
+            <div>
+              <label className="block text-xs font-mono uppercase text-[#7d8b99] mb-1.5">
+                Project Type
+              </label>
+              <select
+                value={projectType}
+                onChange={(e) => setProjectType(e.target.value)}
+                className="w-full text-xs font-sans bg-[#141a22] text-[#e6e2da] p-3 rounded border border-[#232c37] focus:outline-none focus:border-[#384656]"
+              >
+                <option value="3-5 Page Turnkey Business Site">3 to 5 Page Turnkey Business Website (4–5 Days)</option>
+                <option value="Offline-First Mobile Application">Offline-First Mobile Application / Companion</option>
+                <option value="B2B Wholesale / Direct Routing Platform">B2B Wholesale / Direct Routing Platform</option>
+                <option value="Interface Audit & Performance Restructure">Interface Audit &amp; Performance Restructure</option>
+              </select>
             </div>
 
-            <h3 className="text-2xl font-serif text-[#e6e2da] mb-3">
-              Prepare a Scope Brief
-            </h3>
-            <p className="text-xs text-[#7d8b99] leading-relaxed mb-6 font-sans">
-              Select your requirements below to instantly format a clear, structured email inquiry directly to <code className="text-[#e6e2da] font-mono bg-[#141a22] px-1 py-0.5 rounded border border-[#232c37]">{CONTACT_EMAIL}</code>.
-            </p>
+            <div>
+              <label className="block text-xs font-mono uppercase text-[#7d8b99] mb-1.5">
+                Target Timeline
+              </label>
+              <select
+                value={timeline}
+                onChange={(e) => setTimeline(e.target.value)}
+                className="w-full text-xs font-sans bg-[#141a22] text-[#e6e2da] p-3 rounded border border-[#232c37] focus:outline-none focus:border-[#384656]"
+              >
+                <option value="4–5 Days Turnkey (Standard)">4–5 Days Turnkey (Standard)</option>
+                <option value="Within 2 Weeks">Within 2 Weeks</option>
+                <option value="Flexible / Asynchronous">Flexible / Asynchronous</option>
+              </select>
+            </div>
 
-            <div className="space-y-4">
-              <div>
-                <label className="block text-xs font-mono uppercase text-[#7d8b99] mb-1.5">
-                  Project Type
-                </label>
-                <select
-                  value={projectType}
-                  onChange={(e) => setProjectType(e.target.value)}
-                  className="w-full text-xs font-sans bg-[#141a22] text-[#e6e2da] p-3 rounded border border-[#232c37] focus:outline-none focus:border-[#384656]"
-                >
-                  <option value="3-5 Page Turnkey Business Site">3 to 5 Page Turnkey Business Website (4–5 Days)</option>
-                  <option value="Offline-First Mobile Application">Offline-First Mobile Application / Companion</option>
-                  <option value="B2B Wholesale / Direct Routing Platform">B2B Wholesale / Direct Routing Platform</option>
-                  <option value="Interface Audit & Performance Restructure">Interface Audit &amp; Performance Restructure</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-xs font-mono uppercase text-[#7d8b99] mb-1.5">
-                  Target Timeline
-                </label>
-                <select
-                  value={timeline}
-                  onChange={(e) => setTimeline(e.target.value)}
-                  className="w-full text-xs font-sans bg-[#141a22] text-[#e6e2da] p-3 rounded border border-[#232c37] focus:outline-none focus:border-[#384656]"
-                >
-                  <option value="4–5 Days Turnkey (Standard)">4–5 Days Turnkey (Standard)</option>
-                  <option value="Within 2 Weeks">Within 2 Weeks</option>
-                  <option value="Flexible / Asynchronous">Flexible / Asynchronous</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-xs font-mono uppercase text-[#7d8b99] mb-1.5">
-                  Brief Context Notes (Optional)
-                </label>
-                <textarea
-                  rows={3}
-                  value={notes}
-                  onChange={(e) => setNotes(e.target.value)}
-                  placeholder="e.g. Nursery platform, clinic booking, portfolio, logic app..."
-                  className="w-full text-xs font-sans bg-[#141a22] text-[#e6e2da] placeholder-[#7d8b99] p-3 rounded border border-[#232c37] focus:outline-none focus:border-[#384656]"
-                />
-              </div>
-
-              {/* Google Drive Attached File or Selector */}
-              <div className="pt-2">
-                <span className="block text-xs font-mono uppercase text-[#7d8b99] mb-1.5">
-                  Google Drive Scope Reference
-                </span>
-                {attachedDriveFile ? (
-                  <div className="p-3 bg-[#141a22] border border-[#232c37] rounded flex items-center justify-between text-xs font-mono text-[#e6e2da]">
-                    <div className="truncate mr-2">
-                      <span className="text-[#7d8b99]">Attached: </span>
-                      <span className="font-semibold">{attachedDriveFile.name}</span>
-                    </div>
-                    {onClearAttachedFile && (
-                      <button
-                        type="button"
-                        onClick={onClearAttachedFile}
-                        className="text-xs text-rose-400 hover:text-rose-300 font-mono ml-2 shrink-0 cursor-pointer"
-                      >
-                        [Remove]
-                      </button>
-                    )}
-                  </div>
-                ) : (
-                  <button
-                    type="button"
-                    onClick={onScrollToDrive}
-                    className="w-full py-2 px-3 text-xs font-mono text-[#7d8b99] hover:text-[#e6e2da] bg-[#141a22] hover:bg-[#1c2430] rounded border border-dashed border-[#232c37] transition-colors text-left flex items-center justify-between cursor-pointer"
-                  >
-                    <span>+ Attach project spec / brief from Google Drive</span>
-                    <span>Browse Drive ↓</span>
-                  </button>
-                )}
-              </div>
+            <div>
+              <label className="block text-xs font-mono uppercase text-[#7d8b99] mb-1.5">
+                Brief Context Notes (Optional)
+              </label>
+              <textarea
+                rows={3}
+                value={notes}
+                onChange={(e) => setNotes(e.target.value)}
+                placeholder="e.g. Nursery platform, clinic booking, portfolio, or link to your Notion/Google Doc..."
+                className="w-full text-xs font-sans bg-[#141a22] text-[#e6e2da] placeholder-[#7d8b99] p-3 rounded border border-[#232c37] focus:outline-none focus:border-[#384656]"
+              />
             </div>
           </div>
 
-          <div className="pt-6 border-t border-[#1b2127] mt-6">
+          <div className="mt-4 pt-4 border-t border-[#1b2127]">
             <a
               href={generateMailto()}
               className="w-full py-3 px-4 text-xs font-mono font-medium text-[#090b0e] bg-[#e6e2da] hover:bg-white hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 rounded flex items-center justify-center gap-2 transition-all duration-200 uppercase tracking-wider text-center cursor-pointer"
@@ -242,16 +192,16 @@ export const BackgroundProcess: React.FC<BackgroundProcessProps> = ({
               <span>Draft Scope Email to Nook Studio &amp; Co.</span>
               <span>↗</span>
             </a>
-            <span className="block text-[11px] text-[#7d8b99] text-center mt-2 font-mono">
-              Responses sent within 24 hours with a scope assessment
-            </span>
+            <p className="font-mono text-[10px] text-[#637282] mt-2 text-center">
+              Responses sent within 24 hours with an initial scope assessment.
+            </p>
           </div>
         </div>
       </div>
 
       {/* 4 Quantitative Metrics with Scroll Reveal */}
       <ScrollReveal distance={20} duration={0.6} delay={100}>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8 border-t border-[#1b2127]">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-6 border-t border-[#1b2127]">
           {BACKGROUND_STATS.map((stat, idx) => (
             <div key={idx} className="flex flex-col">
               <span className="font-serif text-3xl font-normal text-[#e6e2da] tabular-nums">
