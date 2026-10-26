@@ -1,0 +1,8 @@
+{
+  "name": "Nook - Portfolio",
+  "description": "Portfolio of an Independent Digital Product Builder & Interface Designer specializing in minimalist business websites and offline-first mobile applications.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

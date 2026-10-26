@@ -1,0 +1,10 @@
+/**
+ * Global OLED Dark Theme Canvas
+ */
+html,
+body,
+#root {
+  background-color: #090b0e;
+  color: #e6e2da;
+  min-height: 100%;
+}
