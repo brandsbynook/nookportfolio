@@ -64,7 +64,7 @@ export const FeaturedWork: React.FC = () => {
       `}</style>
 
       {/* Section Header with Scroll Reveal */}
-      <ScrollReveal distance={20} duration={0.6}>
+      <ScrollReveal distance={12} duration={0.25} threshold={0.05} rootMargin="0px 0px -50px 0px">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-[#1b222c] mb-12">
           <div>
             <div className="flex items-center gap-2 text-xs font-mono text-[#7d8b99] uppercase tracking-wider mb-2">
@@ -82,7 +82,7 @@ export const FeaturedWork: React.FC = () => {
         </div>
       </ScrollReveal>
 
-      {/* Projects Grid: 3 Clean Structured Cards with Staggered Scroll-Reveal */}
+      {/* Projects Grid: 3 Clean Structured Cards with Snappy Scroll-Reveal */}
       <div className="space-y-8">
         {FEATURED_PROJECTS.map((project, idx) => {
           const isExpanded = expandedId === project.id;
@@ -94,13 +94,19 @@ export const FeaturedWork: React.FC = () => {
           return (
             <ScrollReveal
               key={project.id}
-              distance={20}
-              duration={0.6}
-              delay={idx * 160} // Staggered delay for project cards (0ms, 160ms, 320ms)
+              distance={12}
+              duration={0.25}
+              threshold={0.05}
+              rootMargin="0px 0px -50px 0px"
+              delay={0}
+              className="will-change-transform"
             >
               {isVanaspati ? (
                 /* Card 01: The Vanaspati Co. - Expanded 5-Asset Filmstrip + Compact Static Text Base */
-                <div className="relative bg-[#0b0d11] border border-[#1b2127] rounded-xl overflow-hidden transition-all duration-300 hover:border-[#2d3742] hover:shadow-xl">
+                <div
+                  className="relative bg-[#0b0d11] border border-[#1b2127] rounded-xl overflow-hidden transition-all duration-300 hover:border-[#2d3742] hover:shadow-xl will-change-transform"
+                  style={{ willChange: 'transform, opacity' }}
+                >
                   {/* Top Showcase Gallery Container: Expanded Height */}
                   <div className="relative h-[380px] lg:h-[420px] w-full overflow-hidden bg-[#07090c] p-5 flex items-center border-b border-[#1b2127] group">
                     {/* Subtle edge gradient vignette fades */}
@@ -200,7 +206,10 @@ export const FeaturedWork: React.FC = () => {
                 </div>
               ) : isGames ? (
                 /* Card 02: nook games - Background Image with Left Overlay Text Block */
-                <div className="relative overflow-hidden rounded-xl border border-[#1b2127] min-h-[520px] md:min-h-[580px] bg-[#090b0e] transition-all duration-300 hover:border-[#2d3742] hover:shadow-xl">
+                <div
+                  className="relative overflow-hidden rounded-xl border border-[#1b2127] min-h-[520px] md:min-h-[580px] bg-[#090b0e] transition-all duration-300 hover:border-[#2d3742] hover:shadow-xl will-change-transform"
+                  style={{ willChange: 'transform, opacity' }}
+                >
                   {/* Full-card background image with left-side dark linear gradient overlay */}
                   <div className="absolute inset-0 w-full h-full">
                     <img
@@ -213,8 +222,8 @@ export const FeaturedWork: React.FC = () => {
 
                   {/* Overlay Content Block Positioned on the Left */}
                   <div
-                    className="absolute inset-0 flex flex-col justify-center max-w-xl p-8 lg:p-12 z-10 space-y-4"
-                    style={{ animation: 'overlaySlideUp 700ms ease-out forwards' }}
+                    className="absolute inset-0 flex flex-col justify-center max-w-xl p-8 lg:p-12 z-10 space-y-4 will-change-transform"
+                    style={{ animation: 'overlaySlideUp 200ms cubic-bezier(0.16, 1, 0.3, 1) forwards', willChange: 'transform, opacity' }}
                   >
                     {/* Tag */}
                     <div className="text-xs font-mono text-[#7d8b99]">
@@ -285,7 +294,10 @@ export const FeaturedWork: React.FC = () => {
                 </div>
               ) : (
                 /* Card 03: nook sanctuary - Background Image with Left Overlay Text Block */
-                <div className="relative overflow-hidden rounded-xl border border-[#1b2127] min-h-[520px] md:min-h-[580px] bg-[#090b0e] transition-all duration-300 hover:border-[#2d3742] hover:shadow-xl">
+                <div
+                  className="relative overflow-hidden rounded-xl border border-[#1b2127] min-h-[520px] md:min-h-[580px] bg-[#090b0e] transition-all duration-300 hover:border-[#2d3742] hover:shadow-xl will-change-transform"
+                  style={{ willChange: 'transform, opacity' }}
+                >
                   {/* Full-card background image with left-side dark linear gradient overlay */}
                   <div className="absolute inset-0 w-full h-full">
                     <img
@@ -298,8 +310,8 @@ export const FeaturedWork: React.FC = () => {
 
                   {/* Overlay Content Block Positioned on the Left */}
                   <div
-                    className="absolute inset-0 flex flex-col justify-center max-w-xl p-8 lg:p-12 z-10 space-y-4"
-                    style={{ animation: 'overlaySlideUp 700ms ease-out forwards' }}
+                    className="absolute inset-0 flex flex-col justify-center max-w-xl p-8 lg:p-12 z-10 space-y-4 will-change-transform"
+                    style={{ animation: 'overlaySlideUp 200ms cubic-bezier(0.16, 1, 0.3, 1) forwards', willChange: 'transform, opacity' }}
                   >
                     {/* Tag */}
                     <div className="text-xs font-mono text-[#7d8b99]">

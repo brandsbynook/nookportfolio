@@ -5,11 +5,8 @@
 
 import React, { useState } from 'react';
 import {
-  BUILDER_NAME,
-  BUILDER_TITLE,
   CONTACT_EMAIL,
   CONTACT_NOTE,
-  GOOGLE_PLAY_DEV_URL,
   AVAILABILITY_STATUS,
 } from '../constants';
 import ScrollReveal from './ScrollReveal';
@@ -30,11 +27,24 @@ export const ContactFooter: React.FC = () => {
   return (
     <footer id="contact" className="bg-[#090b0e] text-[#e6e2da] pt-20 pb-12 border-t border-[#1b222c]">
       <div className="max-w-[1200px] mx-auto px-6 md:px-10">
-        {/* Main Contact Section with Scroll Reveal */}
-        <ScrollReveal distance={20} duration={0.6}>
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-[#1b222c]">
-            {/* Left Column: Heading and Core Note */}
-            <div className="md:col-span-7 space-y-6">
+        {/* Upper Contact Block with Contained Watermark */}
+        <div className="relative overflow-visible">
+          {/* Subtle Studio Emblem Watermark Impression - Contained in upper section */}
+          <div className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none select-none z-0 w-60 h-60 md:w-72 md:h-72 lg:w-80 lg:h-80">
+            <img
+              src="/assets/nook-icon.png"
+              alt=""
+              className="w-full h-full object-contain opacity-[0.06] grayscale contrast-125 mix-blend-screen"
+              style={{
+                maskImage: 'radial-gradient(circle at center, black 45%, transparent 85%)',
+                WebkitMaskImage: 'radial-gradient(circle at center, black 45%, transparent 85%)',
+              }}
+            />
+          </div>
+
+          {/* Main Contact Content */}
+          <ScrollReveal distance={12} duration={0.25} threshold={0.05} rootMargin="0px 0px -50px 0px">
+            <div className="relative z-10 max-w-4xl space-y-6">
               <div className="inline-flex items-center gap-2 text-xs font-mono text-[#7d8b99]">
                 <span className="w-2 h-2 rounded-full bg-emerald-400" />
                 <span className="text-[#e6e2da]">{AVAILABILITY_STATUS}</span>
@@ -44,8 +54,8 @@ export const ContactFooter: React.FC = () => {
                 Have a project in mind? Let’s build without friction.
               </h2>
 
-              {/* Required exact note */}
-              <p className="text-sm sm:text-base text-[#7d8b99] font-sans leading-relaxed max-w-xl">
+              {/* Subtext with natural wider line wrap */}
+              <p className="text-sm sm:text-base text-[#7d8b99] font-sans leading-relaxed">
                 {CONTACT_NOTE}
               </p>
 
@@ -67,68 +77,29 @@ export const ContactFooter: React.FC = () => {
                 </button>
               </div>
             </div>
-
-            {/* Right Column: Google Play Dev Profile & Links */}
-            <div className="md:col-span-5 flex flex-col justify-between space-y-8 bg-[#0b0d11] p-8 rounded-lg border border-[#1b2127] transition-all hover:border-[#2d3742]">
-              <div>
-                <span className="text-xs font-mono uppercase tracking-wider text-[#7d8b99] block mb-2">
-                  Google Play Presence
-                </span>
-                <h3 className="font-serif text-xl text-[#e6e2da] mb-2">
-                  Android Developer Profile
-                </h3>
-                <p className="text-xs text-[#7d8b99] leading-relaxed mb-4 font-sans">
-                  View all published offline-first applications, logic suites, and sensory regulation tools on Google Play.
-                </p>
-
-                {/* Small secondary link to Google Play Developer Profile with visible hover */}
-                <a
-                  href={GOOGLE_PLAY_DEV_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-xs font-mono text-[#7d8b99] hover:text-[#e6e2da] hover:translate-x-1 underline underline-offset-4 transition-all duration-200 cursor-pointer"
-                >
-                  <span>Google Play Developer Profile (Nook Studio &amp; Co.)</span>
-                  <span>↗</span>
-                </a>
-              </div>
-
-            <div className="pt-6 border-t border-[#1b2127] text-xs font-mono text-[#7d8b99] space-y-2">
-              <div className="flex justify-between">
-                <span>Workflow:</span>
-                <span className="text-[#e6e2da]">Asynchronous via Email</span>
-              </div>
-              <div className="flex justify-between">
-                <span>Turnaround:</span>
-                <span className="text-[#e6e2da]">4–5 Days Turnkey</span>
-              </div>
-              <div className="flex justify-between">
-                <span>Deployment:</span>
-                <span className="text-[#e6e2da]">Vercel Edge / Google Play</span>
-              </div>
-            </div>
-          </div>
+          </ScrollReveal>
         </div>
-      </ScrollReveal>
 
-        {/* Sub-Footer */}
-        <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-mono text-[#7d8b99]">
+        {/* Refined Bottom Colophon Utility Bar */}
+        <div className="border-t border-[#1b2127] pt-6 mt-12 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] font-mono text-[#637282]">
           <div>
-            <span className="text-[#e6e2da] font-semibold">{BUILDER_NAME}</span>
-            <span className="mx-2">·</span>
-            <span>{BUILDER_TITLE}</span>
+            © 2026 Samriddhi Dutta · Nook Studio &amp; Co.
           </div>
 
-          <div className="flex items-center gap-6">
-            <span>Sensory-Conscious · High Performance · Zero Noise</span>
-            <button
-              onClick={scrollToTop}
-              className="text-[#7d8b99] hover:text-[#e6e2da] transition-colors flex items-center gap-1 cursor-pointer"
-            >
-              <span>Back to Top</span>
-              <span>↑</span>
-            </button>
+          <div>
+            Next.js · Tailwind CSS · Vercel Edge · Zero Tracking
           </div>
+
+          <a
+            href="#top"
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToTop();
+            }}
+            className="hover:text-[#e6e2da] transition-colors flex items-center gap-1 cursor-pointer"
+          >
+            <span>Back to Top ↑</span>
+          </a>
         </div>
       </div>
     </footer>

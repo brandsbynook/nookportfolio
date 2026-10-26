@@ -10,6 +10,7 @@ import {
   WORKFLOW_PIPELINE,
   BACKGROUND_STATS,
   CONTACT_EMAIL,
+  GOOGLE_PLAY_DEV_URL,
 } from '../constants';
 import ScrollReveal from './ScrollReveal';
 
@@ -124,77 +125,100 @@ export const BackgroundProcess: React.FC = () => {
           </div>
         </div>
 
-        {/* Right Column: Turnkey Scope Initiator Box */}
-        <div className="lg:col-span-5 bg-[#0b0d11] p-5 md:p-6 rounded-lg border border-[#1b2127] h-fit self-start">
-          <div className="flex items-center justify-between text-xs font-mono text-[#7d8b99] mb-4">
-            <span>Quick Scope Builder</span>
-            <span>Turnkey</span>
-          </div>
-
-          <h3 className="text-2xl font-serif text-[#e6e2da] mb-3">
-            Prepare a Scope Brief
-          </h3>
-          <p className="text-xs text-[#7d8b99] leading-relaxed mb-6 font-sans">
-            Select your requirements below to instantly format a clear, structured email inquiry directly to <code className="text-[#e6e2da] font-mono bg-[#141a22] px-1 py-0.5 rounded border border-[#232c37]">{CONTACT_EMAIL}</code>.
-          </p>
-
-          <div className="space-y-4">
-            <div>
-              <label className="block text-xs font-mono uppercase text-[#7d8b99] mb-1.5">
-                Project Type
-              </label>
-              <select
-                value={projectType}
-                onChange={(e) => setProjectType(e.target.value)}
-                className="w-full text-xs font-sans bg-[#141a22] text-[#e6e2da] p-3 rounded border border-[#232c37] focus:outline-none focus:border-[#384656]"
-              >
-                <option value="3-5 Page Turnkey Business Site">3 to 5 Page Turnkey Business Website (4–5 Days)</option>
-                <option value="Offline-First Mobile Application">Offline-First Mobile Application / Companion</option>
-                <option value="B2B Wholesale / Direct Routing Platform">B2B Wholesale / Direct Routing Platform</option>
-                <option value="Interface Audit & Performance Restructure">Interface Audit &amp; Performance Restructure</option>
-              </select>
+        {/* Right Column: Turnkey Scope Initiator Box & Google Play Presence */}
+        <div className="lg:col-span-5 self-start">
+          <div className="bg-[#0b0d11] p-5 md:p-6 rounded-lg border border-[#1b2127]">
+            <div className="flex items-center justify-between text-xs font-mono text-[#7d8b99] mb-4">
+              <span>Quick Scope Builder</span>
+              <span>Turnkey</span>
             </div>
 
-            <div>
-              <label className="block text-xs font-mono uppercase text-[#7d8b99] mb-1.5">
-                Target Timeline
-              </label>
-              <select
-                value={timeline}
-                onChange={(e) => setTimeline(e.target.value)}
-                className="w-full text-xs font-sans bg-[#141a22] text-[#e6e2da] p-3 rounded border border-[#232c37] focus:outline-none focus:border-[#384656]"
-              >
-                <option value="4–5 Days Turnkey (Standard)">4–5 Days Turnkey (Standard)</option>
-                <option value="Within 2 Weeks">Within 2 Weeks</option>
-                <option value="Flexible / Asynchronous">Flexible / Asynchronous</option>
-              </select>
-            </div>
-
-            <div>
-              <label className="block text-xs font-mono uppercase text-[#7d8b99] mb-1.5">
-                Brief Context Notes (Optional)
-              </label>
-              <textarea
-                rows={3}
-                value={notes}
-                onChange={(e) => setNotes(e.target.value)}
-                placeholder="e.g. Nursery platform, clinic booking, portfolio, or link to your Notion/Google Doc..."
-                className="w-full text-xs font-sans bg-[#141a22] text-[#e6e2da] placeholder-[#7d8b99] p-3 rounded border border-[#232c37] focus:outline-none focus:border-[#384656]"
-              />
-            </div>
-          </div>
-
-          <div className="mt-4 pt-4 border-t border-[#1b2127]">
-            <a
-              href={generateMailto()}
-              className="w-full py-3 px-4 text-xs font-mono font-medium text-[#090b0e] bg-[#e6e2da] hover:bg-white hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 rounded flex items-center justify-center gap-2 transition-all duration-200 uppercase tracking-wider text-center cursor-pointer"
-            >
-              <span>Draft Scope Email to Nook Studio &amp; Co.</span>
-              <span>↗</span>
-            </a>
-            <p className="font-mono text-[10px] text-[#637282] mt-2 text-center">
-              Responses sent within 24 hours with an initial scope assessment.
+            <h3 className="text-2xl font-serif text-[#e6e2da] mb-3">
+              Prepare a Scope Brief
+            </h3>
+            <p className="text-xs text-[#7d8b99] leading-relaxed mb-6 font-sans">
+              Select your requirements below to instantly format a clear, structured email inquiry directly to <code className="text-[#e6e2da] font-mono bg-[#141a22] px-1 py-0.5 rounded border border-[#232c37]">{CONTACT_EMAIL}</code>.
             </p>
+
+            <div className="space-y-4">
+              <div>
+                <label className="block text-xs font-mono uppercase text-[#7d8b99] mb-1.5">
+                  Project Type
+                </label>
+                <select
+                  value={projectType}
+                  onChange={(e) => setProjectType(e.target.value)}
+                  className="w-full text-xs font-sans bg-[#141a22] text-[#e6e2da] p-3 rounded border border-[#232c37] focus:outline-none focus:border-[#384656]"
+                >
+                  <option value="3-5 Page Turnkey Business Site">3 to 5 Page Turnkey Business Website (4–5 Days)</option>
+                  <option value="Offline-First Mobile Application">Offline-First Mobile Application / Companion</option>
+                  <option value="B2B Wholesale / Direct Routing Platform">B2B Wholesale / Direct Routing Platform</option>
+                  <option value="Interface Audit &amp; Performance Restructure">Interface Audit &amp; Performance Restructure</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-xs font-mono uppercase text-[#7d8b99] mb-1.5">
+                  Target Timeline
+                </label>
+                <select
+                  value={timeline}
+                  onChange={(e) => setTimeline(e.target.value)}
+                  className="w-full text-xs font-sans bg-[#141a22] text-[#e6e2da] p-3 rounded border border-[#232c37] focus:outline-none focus:border-[#384656]"
+                >
+                  <option value="4–5 Days Turnkey (Standard)">4–5 Days Turnkey (Standard)</option>
+                  <option value="Within 2 Weeks">Within 2 Weeks</option>
+                  <option value="Flexible / Asynchronous">Flexible / Asynchronous</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-xs font-mono uppercase text-[#7d8b99] mb-1.5">
+                  Brief Context Notes (Optional)
+                </label>
+                <textarea
+                  rows={3}
+                  value={notes}
+                  onChange={(e) => setNotes(e.target.value)}
+                  placeholder="e.g. Nursery platform, clinic booking, portfolio, or link to your Notion/Google Doc..."
+                  className="w-full text-xs font-sans bg-[#141a22] text-[#e6e2da] placeholder-[#7d8b99] p-3 rounded border border-[#232c37] focus:outline-none focus:border-[#384656]"
+                />
+              </div>
+            </div>
+
+            <div className="mt-4 pt-4 border-t border-[#1b2127]">
+              <a
+                href={generateMailto()}
+                className="w-full py-3 px-4 text-xs font-mono font-medium text-[#090b0e] bg-[#e6e2da] hover:bg-white hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 rounded flex items-center justify-center gap-2 transition-all duration-200 uppercase tracking-wider text-center cursor-pointer"
+              >
+                <span>Draft Scope Email to Nook Studio &amp; Co.</span>
+                <span>↗</span>
+              </a>
+              <p className="font-mono text-[10px] text-[#637282] mt-2 text-center">
+                Responses sent within 24 hours with an initial scope assessment.
+              </p>
+            </div>
+          </div>
+
+          {/* Google Play Developer Profile Card */}
+          <div className="mt-4 bg-[#0b0d11] border border-[#1b2127] rounded-xl p-5">
+            <span className="font-mono text-[10px] tracking-widest uppercase text-[#7d8b99] block">
+              GOOGLE PLAY PRESENCE
+            </span>
+            <h4 className="font-serif text-lg text-[#e6e2da] mt-1">
+              Android Developer Profile
+            </h4>
+            <p className="text-xs text-[#94a3b8] leading-relaxed mt-2">
+              View published offline-first applications, logic suites, and sensory regulation tools on Google Play.
+            </p>
+            <a
+              href={GOOGLE_PLAY_DEV_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-mono text-xs text-[#e6e2da] underline underline-offset-4 decoration-[#384657] hover:decoration-[#e6e2da] mt-3 inline-block"
+            >
+              Google Play Developer Profile (Nook Studio &amp; Co.) ↗
+            </a>
           </div>
         </div>
       </div>

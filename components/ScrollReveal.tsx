@@ -8,8 +8,11 @@ import React, { useEffect, useRef, useState } from 'react';
 interface ScrollRevealProps {
   children: React.ReactNode;
   delay?: number; // Delay in milliseconds
-  duration?: number; // Duration in seconds (default: 0.6)
-  distance?: number; // Distance in px (default: 20)
+  duration?: number; // Duration in seconds (default: 0.25)
+  distance?: number; // Distance in px (default: 12)
+  threshold?: number; // Visibility threshold ratio (default: 0.05)
+  rootMargin?: string; // Intersection margin (default: '0px 0px -50px 0px')
+  easing?: string; // CSS transition timing (default: cubic-bezier(0.16, 1, 0.3, 1))
   className?: string;
   as?: React.ElementType;
 }
@@ -17,8 +20,11 @@ interface ScrollRevealProps {
 export const ScrollReveal: React.FC<ScrollRevealProps> = ({
   children,
   delay = 0,
-  duration = 0.6,
-  distance = 20,
+  duration = 0.25,
+  distance = 12,
+  threshold = 0.05,
+  rootMargin = '0px 0px -50px 0px',
+  easing = 'cubic-bezier(0.16, 1, 0.3, 1)',
   className = '',
   as: Component = 'div',
 }) => {
@@ -44,8 +50,8 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
         });
       },
       {
-        threshold: 0.12,
-        rootMargin: '0px 0px -40px 0px',
+        threshold,
+        rootMargin,
       }
     );
 
@@ -59,18 +65,18 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
         observer.unobserve(currentEl);
       }
     };
-  }, []);
+  }, [threshold, rootMargin]);
 
   return (
     <Component
       ref={elementRef}
-      className={className}
+      className={`will-change-transform ${className}`.trim()}
       style={{
         opacity: isVisible ? 1 : 0,
         transform: isVisible ? 'translateY(0px)' : `translateY(${distance}px)`,
-        transition: `opacity ${duration}s cubic-bezier(0.16, 1, 0.3, 1), transform ${duration}s cubic-bezier(0.16, 1, 0.3, 1)`,
+        transition: `opacity ${duration}s ${easing}, transform ${duration}s ${easing}`,
         transitionDelay: `${delay}ms`,
-        willChange: 'opacity, transform',
+        willChange: 'transform, opacity',
       }}
     >
       {children}
