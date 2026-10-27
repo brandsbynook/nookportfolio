@@ -69,7 +69,7 @@ export const WorkGrid: React.FC<WorkGridProps> = () => {
       `}</style>
 
       {/* Section Header with Scroll Reveal */}
-      <ScrollReveal distance={12} duration={0.25} threshold={0.05} rootMargin="0px 0px -50px 0px">
+      <ScrollReveal>
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-[#1b222c] mb-12">
           <div>
             <div className="flex items-center gap-2 text-xs font-mono text-[#7d8b99] uppercase tracking-wider mb-2">
@@ -99,25 +99,19 @@ export const WorkGrid: React.FC<WorkGridProps> = () => {
           return (
             <ScrollReveal
               key={project.id}
-              distance={12}
-              duration={0.25}
-              threshold={0.05}
-              rootMargin="0px 0px -50px 0px"
-              delay={0}
-              className="will-change-transform"
+              delay={idx * 0.08}
+              className="w-full"
             >
               {isVanaspati ? (
                 /* Card 01: The Vanaspati Co. - Expanded 5-Asset Filmstrip + Compact Static Text Base */
                 <div
-                  className="relative bg-[#0b0d11] border border-[#1b2127] rounded-xl overflow-hidden transition-all duration-300 hover:border-[#2d3742] hover:shadow-xl will-change-transform"
+                  className="group relative bg-[#0b0d11] border border-[#1b2127] hover:border-[#2a3441] focus-within:border-[#2a3441] rounded-xl overflow-hidden transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-xl will-change-transform"
                   style={{ willChange: 'transform, opacity' }}
                 >
+                  {/* Ambient top gradient glow layer */}
+                  <div className="absolute inset-x-0 -top-24 h-56 bg-gradient-to-b from-[#25303f]/20 via-[#12161c]/10 to-transparent pointer-events-none rounded-t-2xl blur-xl" />
                   {/* Top Showcase Gallery Container: Expanded Height */}
                   <div className="relative h-[380px] lg:h-[420px] w-full overflow-hidden bg-[#07090c] p-5 flex items-center border-b border-[#1b2127] group">
-                    {/* Subtle edge gradient vignette fades */}
-                    <div className="absolute left-0 top-0 bottom-0 w-8 md:w-16 bg-gradient-to-r from-[#07090c] to-transparent z-10 pointer-events-none" />
-                    <div className="absolute right-0 top-0 bottom-0 w-8 md:w-16 bg-gradient-to-l from-[#07090c] to-transparent z-10 pointer-events-none" />
-
                     {/* Continuous horizontal marquee track with all 5 assets */}
                     <div
                       className="flex gap-4 h-full items-center shrink-0 animate-vanaspati-marquee group-hover:[animation-play-state:paused]"
@@ -212,9 +206,11 @@ export const WorkGrid: React.FC<WorkGridProps> = () => {
               ) : isGames ? (
                 /* Card 02: nook games - Background Image with Left Overlay Text Block */
                 <div
-                  className="relative overflow-hidden rounded-xl border border-[#1b2127] min-h-[520px] md:min-h-[580px] bg-[#090b0e] transition-all duration-300 hover:border-[#2d3742] hover:shadow-xl will-change-transform"
+                  className="group relative overflow-hidden rounded-xl border border-[#1b2127] hover:border-[#2a3441] focus-within:border-[#2a3441] min-h-[520px] md:min-h-[580px] bg-[#090b0e] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-xl will-change-transform"
                   style={{ willChange: 'transform, opacity' }}
                 >
+                  {/* Ambient top gradient glow layer */}
+                  <div className="absolute inset-x-0 -top-24 h-56 bg-gradient-to-b from-[#25303f]/20 via-[#12161c]/10 to-transparent pointer-events-none rounded-t-2xl blur-xl z-[5]" />
                   {/* Full-card background image with left-side dark linear gradient overlay */}
                   <div className="absolute inset-0 w-full h-full">
                     <img
@@ -300,9 +296,11 @@ export const WorkGrid: React.FC<WorkGridProps> = () => {
               ) : (
                 /* Card 03: nook sanctuary - Background Image with Left Overlay Text Block */
                 <div
-                  className="relative overflow-hidden rounded-xl border border-[#1b2127] min-h-[520px] md:min-h-[580px] bg-[#090b0e] transition-all duration-300 hover:border-[#2d3742] hover:shadow-xl will-change-transform"
+                  className="group relative overflow-hidden rounded-xl border border-[#1b2127] hover:border-[#2a3441] focus-within:border-[#2a3441] min-h-[520px] md:min-h-[580px] bg-[#090b0e] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-xl will-change-transform"
                   style={{ willChange: 'transform, opacity' }}
                 >
+                  {/* Ambient top gradient glow layer */}
+                  <div className="absolute inset-x-0 -top-24 h-56 bg-gradient-to-b from-[#25303f]/20 via-[#12161c]/10 to-transparent pointer-events-none rounded-t-2xl blur-xl z-[5]" />
                   {/* Full-card background image with left-side dark linear gradient overlay */}
                   <div className="absolute inset-0 w-full h-full">
                     <img

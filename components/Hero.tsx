@@ -10,26 +10,30 @@ interface HeroProps {
   onScrollToWork: () => void;
 }
 
-const OPERATIONAL_STANDARDS_CARDS = [
+const PRODUCT_DECISION_CARDS = [
   {
-    header: '01 · STANDARD',
-    title: 'Turnkey Delivery',
-    description: '3 to 5 page static sites delivered live in 4–5 days for a transparent flat fee.',
+    header: '01 · COMMERCE CONTEXT',
+    title: 'Adapting to Real User Habit',
+    description:
+      'On The Vanaspati Co., forcing a conventional cart checkout would have failed wholesale nurseries who trade on relationships. Replacing it with direct WhatsApp dispatch and structured indent uploads aligned with actual trading behavior.',
   },
   {
-    header: '02 · STANDARD',
-    title: 'Strictly Asynchronous',
-    description: 'Briefs, updates, and reviews handled clearly in writing. Zero unscheduled calls.',
+    header: '02 · WELLNESS CONTEXT',
+    title: 'Intentional Subtraction',
+    description:
+      'For nook sanctuary, high-engagement patterns like notifications and streaks actively contradicted user recovery. Cutting cloud tracking and gamification proved that zero-noise, local-first utility drove sustained retention.',
   },
   {
-    header: '03 · STANDARD',
-    title: 'High Performance',
-    description: 'Lightweight edge deployment with instant load times and zero tracking bloat.',
+    header: '03 · ENGINEERING CONTEXT',
+    title: 'Performance Over Overhead',
+    description:
+      'Choosing edge deployment, client-side SQLite persistence, and minimal asset weight. Every technical layer is audited so users on low-bandwidth networks experience instant load times and zero layout shifts.',
   },
   {
-    header: '04 · STANDARD',
-    title: 'Cognitive Restraint',
-    description: 'Interfaces designed around human focus, calm palettes, and disciplined typography.',
+    header: '04 · COLLABORATION CONTEXT',
+    title: 'Direct Execution over Bloat',
+    description:
+      'Working asynchronously with founders to eliminate alignment theatre. Shipping production-ready code directly to live URLs within days, validating interfaces against actual usage rather than speculative slide decks.',
   },
 ];
 
@@ -42,17 +46,12 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToWork }) => {
           {/* Left Column: Monograph Typography & Action CTAs */}
           <div className="lg:max-w-[62%] flex flex-col justify-start">
             {/* Monochromatic Status Pill */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#232c37] bg-[#0e1116] mb-5 self-start">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#232c37] bg-[#0e1116] mb-6 self-start">
               <span className="w-1.5 h-1.5 rounded-full bg-[#c8c4bc]/70" />
               <span className="font-mono text-[11px] text-[#94a3b8] tracking-wide">
                 Available for select turnkey client builds · Asynchronous workflow preferred
               </span>
             </div>
-
-            {/* Kicker */}
-            <h2 className="font-mono text-xs tracking-widest uppercase text-[#7d8b99] mb-3">
-              INDEPENDENT PRODUCT BUILDER &amp; INTERFACE DESIGNER · NOOK STUDIO &amp; CO.
-            </h2>
 
             {/* Headline */}
             <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl font-normal tracking-tight text-[#e6e2da] mb-5">
@@ -60,11 +59,11 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToWork }) => {
             </h1>
 
             {/* Editorial Monograph Copy */}
-            <div className="space-y-3 mb-6">
-              <p className="font-serif italic text-base sm:text-lg text-[#c8c4bc] leading-relaxed">
+            <div className="space-y-3.5 mb-7">
+              <p className="font-serif italic text-sm sm:text-[15px] text-[#c8c4bc] leading-[1.75]">
                 Samriddhi Dutta is an independent product builder working at the intersection of cognitive psychology, intentional UI architecture, and clean web engineering.
               </p>
-              <p className="font-serif italic text-base sm:text-lg text-[#c8c4bc] leading-relaxed">
+              <p className="font-serif italic text-sm sm:text-[15px] text-[#c8c4bc] leading-[1.75]">
                 Operating through her independent practice, Nook Studio &amp; Co., she designs and deploys fast, production-ready digital products directly for founders and businesses—bypassing traditional agency bloat, intrusive engagement loops, and unnecessary meetings.
               </p>
             </div>
@@ -102,27 +101,29 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToWork }) => {
           </div>
         </div>
 
-        {/* Full-Width 4-Card Standards Row */}
-        <div
-          id="standards"
-          className="mt-10 lg:mt-12 w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5"
-        >
-          {OPERATIONAL_STANDARDS_CARDS.map((card) => (
-            <div
-              key={card.header}
-              className="bg-[#0b0d11] border border-[#1b2127] rounded-xl p-4 flex flex-col justify-start min-h-[140px] transition-colors duration-200 hover:border-[#2d3742]"
-            >
-              <div className="font-mono text-[10px] uppercase tracking-wider text-[#637282]">
-                {card.header}
+        {/* Full-Width 4-Card Context-Driven Decisions Row */}
+        <div id="standards" className="mt-12 lg:mt-14 w-full">
+          <div className="font-mono text-[10px] sm:text-xs tracking-wider text-[#7d8b99] uppercase mb-4">
+            01–04 · CONTEXT-DRIVEN DECISIONS ACROSS PAST BUILDS
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {PRODUCT_DECISION_CARDS.map((card) => (
+              <div
+                key={card.header}
+                className="bg-[#0b0d11] border border-[#1b2127] rounded-xl p-5 flex flex-col justify-start min-h-[160px] transition-colors duration-200 hover:border-[#2d3742]"
+              >
+                <div className="font-mono text-[10px] sm:text-xs tracking-wider text-[#7d8b99] uppercase">
+                  {card.header}
+                </div>
+                <h3 className="font-serif text-base sm:text-lg text-[#f3f0e8] mt-2 mb-2">
+                  {card.title}
+                </h3>
+                <p className="font-sans text-xs sm:text-[13px] text-[#8b99a8] leading-relaxed">
+                  {card.description}
+                </p>
               </div>
-              <h3 className="font-serif text-base text-[#e6e2da] mt-1.5">
-                {card.title}
-              </h3>
-              <p className="text-xs text-[#94a3b8] leading-relaxed mt-2">
-                {card.description}
-              </p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>

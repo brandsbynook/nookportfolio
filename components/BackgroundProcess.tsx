@@ -30,7 +30,7 @@ export const BackgroundProcess: React.FC = () => {
   return (
     <section id="approach" className="py-12 max-w-[1200px] mx-auto px-6 md:px-10 border-b border-[#1b222c]">
       {/* Section Header with Scroll Reveal */}
-      <ScrollReveal distance={20} duration={0.6}>
+      <ScrollReveal>
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-[#1b222c] mb-8">
           <div>
             <div className="flex items-center gap-2 text-xs font-mono text-[#7d8b99] uppercase tracking-wider mb-2">
@@ -42,8 +42,8 @@ export const BackgroundProcess: React.FC = () => {
               Background &amp; Layered Pipeline
             </h2>
           </div>
-          <p className="text-sm text-[#7d8b99] max-w-md font-sans">
-            Grounding interface design in human psychology, attention economics, and structured AI acceleration.
+          <p className="text-xs sm:text-sm text-[#94a3b8] max-w-md font-sans leading-relaxed">
+            Disciplined interface design and rapid, production-ready web execution for founders who value speed and clarity.
           </p>
         </div>
       </ScrollReveal>
@@ -51,8 +51,9 @@ export const BackgroundProcess: React.FC = () => {
       {/* 2-Column Deep Dive */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-10">
         {/* Left Column: Education & Experience Narrative */}
-        <div className="lg:col-span-7 space-y-5">
-          {/* Behavioral Foundation */}
+        <ScrollReveal className="lg:col-span-7" delay={0.06}>
+          <div className="space-y-5">
+            {/* Behavioral Foundation */}
           <div className="p-6 lg:p-7 bg-[#0b0d11] rounded-lg border border-[#1b2127]">
             <span className="text-xs font-mono uppercase text-[#7d8b99] tracking-wider block mb-2">
               Behavioral &amp; Cognitive Foundation
@@ -104,7 +105,7 @@ export const BackgroundProcess: React.FC = () => {
             <p className="text-sm sm:text-base text-[#e6e2da] font-medium leading-relaxed mb-4">
               &ldquo;{WORKFLOW_PIPELINE}&rdquo;
             </p>
-            <ol className="space-y-3 text-xs sm:text-sm text-[#7d8b99] font-sans">
+            <ol className="space-y-3 text-xs sm:text-[13px] text-[#94a3b8] font-sans leading-relaxed">
               <li className="flex items-start gap-3">
                 <span className="font-mono text-[#e6e2da] font-semibold">01.</span>
                 <span><strong className="text-[#e6e2da]">Deep Research &amp; Scope Comprehension</strong>: Unpacking your domain, customer psychology, and core objective in writing before touching code.</span>
@@ -124,9 +125,10 @@ export const BackgroundProcess: React.FC = () => {
             </ol>
           </div>
         </div>
+        </ScrollReveal>
 
         {/* Right Column: Turnkey Scope Initiator Box & Google Play Presence */}
-        <div className="lg:col-span-5 self-start">
+        <ScrollReveal className="lg:col-span-5 self-start" delay={0.14}>
           <div className="bg-[#0b0d11] p-5 md:p-6 rounded-lg border border-[#1b2127]">
             <div className="flex items-center justify-between text-xs font-mono text-[#7d8b99] mb-4">
               <span>Quick Scope Builder</span>
@@ -220,11 +222,11 @@ export const BackgroundProcess: React.FC = () => {
               Google Play Developer Profile (Nook Studio &amp; Co.) ↗
             </a>
           </div>
-        </div>
+        </ScrollReveal>
       </div>
 
       {/* 4 Quantitative Metrics with Scroll Reveal */}
-      <ScrollReveal distance={20} duration={0.6} delay={100}>
+      <ScrollReveal delay={0.1}>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-6 border-t border-[#1b2127]">
           {BACKGROUND_STATS.map((stat, idx) => (
             <div key={idx} className="flex flex-col">
@@ -234,7 +236,7 @@ export const BackgroundProcess: React.FC = () => {
               <span className="text-xs font-mono font-medium text-[#e6e2da] mt-1">
                 {stat.label}
               </span>
-              <span className="text-[11px] text-[#7d8b99] mt-0.5">
+              <span className="text-xs text-[#8b99a8] leading-normal mt-1">
                 {stat.detail}
               </span>
             </div>
